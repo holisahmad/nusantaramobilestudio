@@ -1,0 +1,91 @@
+# =============================================================
+# NUSANTARA MOBILE STUDIO — Apache .htaccess
+# Untuk: cPanel / Apache shared hosting
+# Taruh di: public_html/ (root domain)
+# =============================================================
+
+Options -Indexes
+ServerSignature Off
+
+# ── Paksa HTTPS ───────────────────────────────────────────────
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ── Redirect www → non-www (atau sebaliknya, pilih satu) ──────
+# Uncomment baris di bawah jika domain utama tanpa www:
+# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+# RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# ── Security Headers ──────────────────────────────────────────
+<IfModule mod_headers.c>
+    # Cegah Clickjacking
+    Header always set X-Frame-Options "DENY"
+
+    # Cegah MIME sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # Paksa HTTPS 1 tahun
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+
+    # Referrer policy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Matikan fitur browser yang tidak dipakai
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+
+    # Content Security Policy
+    Header always set Content-Security-Policy "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
+    # Sembunyikan info server
+    Header unset X-Powered-By
+    Header unset Server
+
+    # Cegah XSS di browser lama
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# ── Cache statis (performance) ────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/html              "access plus 0 seconds"
+    ExpiresByType text/css               "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/svg+xml          "access plus 1 year"
+    ExpiresByType image/png              "access plus 1 year"
+    ExpiresByType image/webp             "access plus 1 year"
+    ExpiresByType image/ico              "access plus 1 year"
+    ExpiresByType application/json       "access plus 0 seconds"
+</IfModule>
+
+# ── Kompres respons (performance) ────────────────────────────
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json text/xml image/svg+xml
+</IfModule>
+
+# ── Block akses ke file sensitif ─────────────────────────────
+<FilesMatch "\.(env|log|sql|bak|sh|py|rb|pl|cfg|ini|htpasswd)$">
+    Require all denied
+</FilesMatch>
+
+# ── Block akses langsung ke config.js dari luar domain ────────
+# (config.js masih bisa dimuat oleh browser via <script src>)
+# Jika ada data sensitif, pertimbangkan pindah ke env variable
+<Files "config.js">
+    Header set Cache-Control "no-store, no-cache"
+</Files>
+
+# ── Rate limiting dasar (butuh mod_evasive, opsional) ────────
+# Aktifkan jika hosting mendukung mod_evasive:
+# <IfModule mod_evasive20.c>
+#     DOSHashTableSize    2048
+#     DOSPageCount        10
+#     DOSSiteCount        100
+#     DOSPageInterval     1
+#     DOSSiteInterval     1
+#     DOSBlockingPeriod   60
+# </IfModule>
+
+# ── Custom error pages ───────────────────────────────────────
+ErrorDocument 404 /index.html
+ErrorDocument 403 /index.html

@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title id="page-title">Nusantara Mobile Studio</title>
+<meta name="description"  id="meta-desc"     content="">
+<meta name="keywords"     id="meta-keywords" content="">
+<meta name="author"                          content="Nusantara Mobile Studio">
+<meta name="robots"                          content="index, follow">
+<link rel="canonical"     id="canonical"     href="">
+
+<!-- hreflang: memberitahu Google ada dua versi bahasa -->
+<link rel="alternate" hreflang="id" href="" id="hreflang-id">
+<link rel="alternate" hreflang="en" href="" id="hreflang-en">
+<link rel="alternate" hreflang="x-default" href="" id="hreflang-default">
+
+<!-- Open Graph -->
+<meta property="og:type"        content="website">
+<meta property="og:url"         id="og-url"   content="">
+<meta property="og:title"       id="og-title" content="">
+<meta property="og:description" id="og-desc"  content="">
+<meta property="og:image"       id="og-image" content="">
+<meta property="og:locale"      id="og-locale" content="id_ID">
+<meta property="og:site_name"   content="Nusantara Mobile Studio">
+
+<!-- Twitter Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:site"        id="tw-site"  content="">
+<meta name="twitter:title"       id="tw-title" content="">
+<meta name="twitter:description" id="tw-desc"  content="">
+<meta name="twitter:image"       id="tw-image" content="">
+
+<!-- Favicon -->
+<link rel="icon"             type="image/svg+xml" href="/favicon.svg">
+<link rel="icon"             type="image/png"     href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon"                      href="/apple-touch-icon.png">
+<link rel="manifest"                              href="/site.webmanifest">
+<meta name="theme-color" content="#0A0D28">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy-deep:#0A0D28;--navy-mid:#161A4A;--navy-card:#1D2158;
+    --violet:#8257FF;--violet-deep:#5B2A8C;--coral:#FF5D73;
+    --coral-soft:#FF8A65;--gold:#FFB627;--teal:#00D9A3;
+    --cream:#F6F3FF;--muted:#B7B4E0;
+    --border:rgba(246,243,255,0.12);
+    --radius-lg:28px;--radius-md:18px;--radius-sm:12px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--navy-deep);color:var(--cream);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;line-height:1.5;}
+  @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important;}}
+  h1,h2,h3,h4{font-family:'Baloo 2',sans-serif;font-weight:700;line-height:1.08;letter-spacing:-0.01em;}
+  .mono{font-family:'JetBrains Mono',monospace;letter-spacing:.02em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  ::selection{background:var(--coral);color:var(--navy-deep);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px;}
+
+  /* Grain */
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  /* ========== NAV ========== */
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(10,13,40,.72);border-bottom:1px solid var(--border);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1240px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.15rem;}
+  .logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--coral),var(--violet));display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1rem;color:var(--navy-deep);flex-shrink:0;}
+  .nav-links{display:flex;gap:34px;font-size:.95rem;font-weight:600;}
+  .nav-links a{opacity:.85;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+
+  /* ── Language switcher ── */
+  .lang-switch{
+    display:flex;align-items:center;gap:4px;
+    background:rgba(246,243,255,.07);border:1px solid var(--border);
+    border-radius:999px;padding:4px;
+  }
+  .lang-btn{
+    font-family:'JetBrains Mono',monospace;font-size:.75rem;font-weight:600;
+    padding:5px 11px;border-radius:999px;border:none;cursor:pointer;
+    background:transparent;color:var(--muted);transition:all .2s;
+    letter-spacing:.04em;
+  }
+  .lang-btn.active{background:var(--gold);color:var(--navy-deep);}
+  .lang-btn:hover:not(.active){color:var(--cream);}
+
+  .nav-right{display:flex;align-items:center;gap:12px;}
+  .nav-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--coral));color:var(--navy-deep);font-weight:700;padding:10px 20px;border-radius:999px;font-size:.9rem;box-shadow:0 6px 20px rgba(255,93,115,.28);transition:transform .2s;}
+  .nav-cta:hover{transform:translateY(-2px);}
+  .nav-toggle{display:none;background:none;border:0;color:var(--cream);font-size:1.6rem;cursor:pointer;}
+
+  @media(max-width:900px){
+    .nav-links{position:fixed;top:70px;left:0;right:0;background:var(--navy-mid);flex-direction:column;gap:0;border-bottom:1px solid var(--border);max-height:0;overflow:hidden;transition:max-height .3s ease;}
+    .nav-links.open{max-height:420px;}
+    .nav-links a{padding:16px 32px;border-bottom:1px solid var(--border);width:100%;}
+    .nav-cta{display:none;}
+    .nav-toggle{display:block;}
+  }
+  @media(max-width:560px){.lang-switch{display:none;} /* on mobile, hide from nav — shown inside mobile menu */}
+
+  /* ========== HERO ========== */
+  .hero{position:relative;padding:96px 0 60px;background:radial-gradient(circle at 15% 15%,rgba(130,87,255,.35),transparent 45%),radial-gradient(circle at 85% 20%,rgba(255,93,115,.28),transparent 50%),linear-gradient(160deg,var(--navy-deep) 0%,var(--navy-mid) 55%,var(--violet-deep) 100%);overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;position:relative;z-index:2;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);background:rgba(255,182,39,.1);border:1px solid rgba(255,182,39,.35);padding:7px 14px;border-radius:999px;margin-bottom:22px;}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(0,217,163,.25);}
+  .hero h1{font-size:clamp(2.4rem,5vw,3.7rem);color:var(--cream);}
+  .hero h1 .highlight{background:linear-gradient(100deg,var(--gold),var(--coral) 55%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p.lead{margin-top:22px;font-size:1.13rem;color:var(--muted);max-width:520px;}
+  .hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+  .btn-primary{background:linear-gradient(135deg,var(--coral),var(--violet));color:#fff;font-weight:700;padding:15px 28px;border-radius:14px;font-size:1rem;box-shadow:0 10px 30px rgba(130,87,255,.35);transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer;}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(130,87,255,.45);}
+  .btn-ghost{border:1.5px solid var(--border);color:var(--cream);font-weight:600;padding:15px 26px;border-radius:14px;font-size:1rem;transition:border-color .2s,background .2s;}
+  .btn-ghost:hover{border-color:var(--gold);background:rgba(255,182,39,.06);}
+  .hero-meta{margin-top:44px;display:flex;gap:30px;flex-wrap:wrap;}
+  .hero-meta div{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--muted);}
+  .hero-meta strong{display:block;font-family:'Baloo 2',sans-serif;font-size:1.5rem;color:var(--cream);font-weight:700;}
+
+  /* Phone cluster */
+  .archipelago{position:relative;height:480px;}
+  .phone{position:absolute;width:118px;height:230px;border-radius:22px;background:var(--navy-card);border:2px solid rgba(246,243,255,.14);box-shadow:0 20px 45px rgba(0,0,0,.45);padding:10px;display:flex;flex-direction:column;gap:8px;animation:float 6s ease-in-out infinite;}
+  .phone .notch{width:34px;height:5px;background:rgba(246,243,255,.18);border-radius:4px;margin:0 auto;}
+  .phone .icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-top:8px;}
+  .phone .label{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);margin-top:auto;}
+  .phone .tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.55rem;padding:3px 7px;border-radius:6px;width:fit-content;background:rgba(0,217,163,.15);color:var(--teal);border:1px solid rgba(0,217,163,.35);}
+  .p1{top:0;left:12%;--r:-9deg;} .p2{top:36px;left:38%;z-index:3;--r:6deg;animation-delay:1.2s;}
+  .p3{top:6px;left:63%;--r:-4deg;animation-delay:.6s;} .p4{top:220px;left:2%;--r:8deg;animation-delay:1.8s;}
+  .p5{top:238px;left:48%;z-index:2;--r:-7deg;animation-delay:.3s;} .p6{top:230px;left:73%;--r:5deg;animation-delay:1.5s;}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,0deg));}50%{transform:translateY(-14px) rotate(var(--r,0deg));}}
+  @media(max-width:980px){.hero-grid{grid-template-columns:1fr;}.archipelago{height:340px;margin-top:20px;}.phone{width:92px;height:180px;}}
+  @media(max-width:520px){.archipelago{display:none;}}
+
+  /* ========== STRIP ========== */
+  .strip{background:var(--navy-mid);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:18px 0;overflow:hidden;white-space:nowrap;}
+  .strip-track{display:inline-flex;gap:14px;animation:scroll-x 32s linear infinite;}
+  .strip:hover .strip-track{animation-play-state:paused;}
+  @keyframes scroll-x{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .chip{font-family:'JetBrains Mono',monospace;font-size:.85rem;padding:8px 18px;border-radius:999px;border:1px solid var(--border);color:var(--muted);display:inline-flex;align-items:center;gap:8px;flex-shrink:0;}
+  .chip .sq{width:7px;height:7px;border-radius:2px;background:var(--gold);}
+
+  /* ========== SECTION ========== */
+  section{padding:96px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem);color:var(--cream);}
+  .section-head p{margin-top:16px;color:var(--muted);font-size:1.05rem;}
+
+  /* ========== STATS ========== */
+  .stats{background:linear-gradient(135deg,var(--navy-mid),var(--navy-card));border-radius:var(--radius-lg);padding:56px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border:1px solid var(--border);position:relative;overflow:hidden;}
+  .stats::before{content:"";position:absolute;top:-40%;right:-10%;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,93,115,.25),transparent 70%);}
+  .stat{position:relative;z-index:1;}
+  .stat .num{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:2.6rem;background:linear-gradient(100deg,var(--gold),var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .stat .lbl{margin-top:6px;color:var(--muted);font-size:.92rem;}
+  @media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr);}}
+
+  /* ========== PORTFOLIO ========== */
+  .portfolio-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .app-card{background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:22px;transition:transform .25s,border-color .25s;}
+  .app-card:hover{transform:translateY(-6px);border-color:rgba(130,87,255,.5);}
+  .app-card .app-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--navy-deep);margin-bottom:16px;}
+  .app-card h4{font-size:1.02rem;color:var(--cream);font-weight:700;}
+  .app-card .cat{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.04em;}
+  .app-card .badges{display:flex;gap:6px;margin-top:14px;flex-wrap:wrap;}
+  .badge{font-family:'JetBrains Mono',monospace;font-size:.65rem;padding:4px 8px;border-radius:6px;}
+  .badge-live{background:rgba(0,217,163,.13);color:var(--teal);border:1px solid rgba(0,217,163,.3);}
+  .badge-soon{background:rgba(255,182,39,.13);color:var(--gold);border:1px solid rgba(255,182,39,.3);}
+  .badge-dev{background:rgba(183,180,224,.1);color:var(--muted);border:1px solid rgba(183,180,224,.2);}
+  .badge-tag{background:rgba(130,87,255,.13);color:#b49fff;border:1px solid rgba(130,87,255,.3);}
+  .app-card.hidden{display:none;}
+  @media(max-width:980px){.portfolio-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.portfolio-grid{grid-template-columns:1fr;}}
+
+  .filter-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+  .filter-tab{font-family:'JetBrains Mono',monospace;font-size:.78rem;padding:8px 16px;border-radius:999px;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .2s;}
+  .filter-tab:hover{border-color:var(--violet);color:var(--cream);}
+  .filter-tab.active{background:var(--violet);border-color:var(--violet);color:#fff;}
+  .portfolio-counter{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--muted);margin-bottom:20px;}
+  .portfolio-counter strong{color:var(--teal);}
+  .load-more-wrap{text-align:center;margin-top:36px;}
+  .btn-load-more{background:transparent;border:1.5px solid var(--border);color:var(--cream);font-weight:600;font-size:.95rem;padding:14px 32px;border-radius:14px;cursor:pointer;transition:border-color .2s,background .2s;display:inline-flex;align-items:center;gap:10px;}
+  .btn-load-more:hover{border-color:var(--violet);background:rgba(130,87,255,.08);}
+  .btn-load-more .count-pill{font-family:'JetBrains Mono',monospace;font-size:.72rem;background:rgba(130,87,255,.2);color:#b49fff;padding:3px 8px;border-radius:6px;}
+
+  /* ========== ACCOUNTS ========== */
+  .account-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .account-card{border-radius:var(--radius-md);padding:28px 24px;border:1px solid var(--border);background:var(--navy-mid);position:relative;overflow:hidden;}
+  .account-card .glow{position:absolute;width:160px;height:160px;border-radius:50%;filter:blur(40px);opacity:.35;top:-40px;right:-40px;}
+  .account-card .num{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--muted);margin-bottom:14px;display:block;}
+  .account-card h4{font-size:1.15rem;color:var(--cream);margin-bottom:10px;}
+  .account-card p{font-size:.9rem;color:var(--muted);}
+  .account-card .count{margin-top:18px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.8rem;}
+  .account-card .count span{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);font-weight:400;margin-left:6px;}
+  @media(max-width:980px){.account-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.account-grid{grid-template-columns:1fr;}}
+
+  /* ========== PROCESS ========== */
+  .process{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;}
+  .process::before{content:"";position:absolute;top:26px;left:6%;right:6%;height:2px;background:repeating-linear-gradient(90deg,var(--border) 0 8px,transparent 8px 16px);z-index:0;}
+  .step{position:relative;z-index:1;}
+  .step .badge-num{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:.95rem;background:var(--navy-mid);border:2px solid var(--border);margin-bottom:16px;}
+  .step.active .badge-num{border-color:var(--teal);color:var(--teal);background:rgba(0,217,163,.1);}
+  .step h4{font-size:1rem;color:var(--cream);margin-bottom:8px;}
+  .step p{font-size:.85rem;color:var(--muted);}
+  @media(max-width:980px){.process{grid-template-columns:repeat(2,1fr);}.process::before{display:none;}}
+  @media(max-width:560px){.process{grid-template-columns:1fr;}}
+
+  /* ========== MARKETS ========== */
+  .markets{display:flex;flex-wrap:wrap;gap:16px;}
+  .market-pill{flex:1 1 160px;background:var(--navy-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;display:flex;align-items:center;justify-content:space-between;}
+  .market-pill .name{font-weight:700;font-size:1rem;}
+  .market-pill .n{font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:.85rem;}
+
+  /* ========== WHY ========== */
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .why-list{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:18px;}
+  .why-list li{display:flex;gap:14px;align-items:flex-start;}
+  .why-list .ico{width:34px;height:34px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(130,87,255,.15);color:var(--violet);font-weight:700;font-family:'JetBrains Mono',monospace;font-size:.85rem;border:1px solid rgba(130,87,255,.35);}
+  .why-list strong{display:block;margin-bottom:3px;color:var(--cream);}
+  .why-list span{color:var(--muted);font-size:.92rem;}
+  .why-visual{background:linear-gradient(160deg,var(--navy-mid),var(--violet-deep));border-radius:var(--radius-lg);padding:36px;border:1px solid var(--border);}
+  .mini-stat-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);}
+  .mini-stat-row:last-child{border-bottom:none;}
+  .mini-stat-row .k{color:var(--muted);font-size:.9rem;}
+  .mini-stat-row .v{font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--teal);}
+  @media(max-width:900px){.why-grid{grid-template-columns:1fr;}}
+
+  /* ========== CTA ========== */
+  .cta-section{background:linear-gradient(120deg,var(--violet-deep),var(--navy-deep) 60%);border-radius:var(--radius-lg);padding:64px 48px;text-align:center;position:relative;overflow:hidden;border:1px solid var(--border);}
+  .cta-section::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,182,39,.18),transparent 45%),radial-gradient(circle at 75% 80%,rgba(255,93,115,.2),transparent 45%);}
+  .cta-section h2{position:relative;font-size:clamp(1.9rem,4vw,2.7rem);color:var(--cream);}
+  .cta-section p{position:relative;margin-top:14px;color:var(--muted);max-width:520px;margin-left:auto;margin-right:auto;}
+  .cta-actions{position:relative;margin-top:30px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+  /* ========== FOOTER ========== */
+  footer{border-top:1px solid var(--border);padding:48px 0 32px;color:var(--muted);font-size:.88rem;}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-links{display:flex;gap:26px;flex-wrap:wrap;}
+  .footer-links a{opacity:.85;transition:opacity .2s,color .2s;}
+  .footer-links a:hover{opacity:1;color:var(--gold);}
+  .footer-bottom{margin-top:32px;padding-top:24px;border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:.78rem;opacity:.7;}
+
+  /* ========== CHAT FAB ========== */
+  .chat-fab{position:fixed;bottom:26px;right:26px;z-index:60;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--coral),var(--violet));display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(130,87,255,.45);border:none;cursor:pointer;color:#fff;transition:transform .2s;text-decoration:none;}
+  .chat-fab:hover{transform:scale(1.07);}
+  .chat-fab svg{width:26px;height:26px;fill:currentColor;}
+
+  /* ========== REVEAL ========== */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- NAV -->
+<header>
+  <nav>
+    <a href="/" class="logo" id="nav-logo-link">
+      <span class="logo-mark" aria-hidden="true">NM</span>
+      <span>Nusantara Mobile Studio</span>
+    </a>
+    <div class="nav-links" id="navLinks" role="navigation">
+      <a href="#portfolio" data-i18n="nav.portfolio"></a>
+      <a href="#akun"      data-i18n="nav.accounts"></a>
+      <a href="#proses"    data-i18n="nav.process"></a>
+      <a href="#pasar"     data-i18n="nav.markets"></a>
+      <a href="#kontak"    data-i18n="nav.contact"></a>
+    </div>
+    <div class="nav-right">
+      <!-- Language switcher -->
+      <div class="lang-switch" role="group" aria-label="Language / Bahasa">
+        <button class="lang-btn active" id="btn-id" type="button" aria-pressed="true"  onclick="setLang('id')">ID</button>
+        <button class="lang-btn"        id="btn-en" type="button" aria-pressed="false" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="#kontak" class="nav-cta" id="nav-cta-btn" data-i18n="nav.cta"></a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">☰</button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow" id="hero-eyebrow"><span class="dot" aria-hidden="true"></span></div>
+      <h1 id="hero-heading"></h1>
+      <p class="lead" id="hero-lead"></p>
+      <div class="hero-actions" id="hero-actions"></div>
+      <div class="hero-meta" id="hero-meta"></div>
+    </div>
+    <div class="archipelago" aria-hidden="true">
+      <div class="phone p1"><div class="notch"></div><div class="icon" style="background:linear-gradient(135deg,#FFB627,#FF5D73);">🎮</div><span class="tag">GAMES</span><div class="label">App #01</div></div>
+      <div class="phone p2"><div class="notch"></div><div class="icon" style="background:linear-gradient(135deg,#8257FF,#5B2A8C);color:#fff;">🛠️</div><span class="tag">TOOLS</span><div class="label">App #02</div></div>
+      <div class="phone p3"><div class="notch"></div><div class="icon" style="background:linear-gradient(135deg,#00D9A3,#00A87E);">💪</div><span class="tag">HEALTH</span><div class="label">App #03</div></div>
+      <div class="phone p4"><div class="notch"></div><div class="icon" style="background:linear-gradient(135deg,#FF5D73,#FF8A65);">💰</div><span class="tag">FINANCE</span><div class="label">App #04</div></div>
+      <div class="phone p5"><div class="notch"></div><div class="icon" style="background:linear-gradient(135deg,#FFB627,#8257FF);color:#fff;">📚</div><span class="tag">EDU</span><div class="label">App #05</div></div>
+      <div class="phone p6"><div class="notch"></div><div class="icon" style="background:linear-gradient(135deg,#00D9A3,#8257FF);color:#fff;">🧘</div><span class="tag">LIFESTYLE</span><div class="label">App #06</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip" id="strip-wrap">
+  <div class="strip-track" id="stripTrack"></div>
+</div>
+
+<!-- STATS -->
+<section aria-label="Studio stats">
+  <div class="wrap">
+    <div class="stats reveal" id="stats-grid"></div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" aria-labelledby="portfolio-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span> <span data-i18n="portfolio-eyebrow">Portofolio</span></div>
+      <h2 id="portfolio-heading" data-i18n="portfolio.heading"></h2>
+      <p data-i18n="portfolio.subtext"></p>
+    </div>
+    <div class="filter-tabs" id="filter-tabs" role="tablist"></div>
+    <div class="portfolio-counter" id="portfolio-counter" aria-live="polite"></div>
+    <div class="portfolio-grid" id="portfolio-grid"></div>
+    <div class="load-more-wrap" id="load-more-wrap" style="display:none;">
+      <button class="btn-load-more" id="load-more-btn" type="button">
+        <span data-i18n="portfolio.loadMore"></span>
+        <span class="count-pill" id="load-more-remaining"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNTS -->
+<section id="akun" style="background:var(--navy-mid);" aria-labelledby="accounts-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span> <span data-i18n="accountsSection.eyebrow"></span></div>
+      <h2 id="accounts-heading" data-i18n="accountsSection.heading"></h2>
+      <p data-i18n="accountsSection.subtext"></p>
+    </div>
+    <div class="account-grid" id="account-grid"></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="proses" aria-labelledby="process-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span> <span data-i18n="processSection.eyebrow"></span></div>
+      <h2 id="process-heading" data-i18n="processSection.heading"></h2>
+      <p data-i18n="processSection.subtext"></p>
+    </div>
+    <div class="process" id="process-steps"></div>
+  </div>
+</section>
+
+<!-- WHY ADS -->
+<section style="background:var(--navy-mid);" aria-labelledby="why-heading">
+  <div class="wrap why-grid">
+    <div>
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span> <span data-i18n="whySection.eyebrow"></span></div>
+      <h2 id="why-heading" style="font-size:clamp(1.8rem,3vw,2.3rem);color:var(--cream);" data-i18n="whySection.heading"></h2>
+      <ul class="why-list" id="why-list"></ul>
+    </div>
+    <div class="why-visual" id="why-facts"></div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section id="pasar" aria-labelledby="markets-heading">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span class="dot" aria-hidden="true"></span> <span data-i18n="marketsSection.eyebrow"></span></div>
+      <h2 id="markets-heading" data-i18n="marketsSection.heading"></h2>
+      <p data-i18n="marketsSection.subtext"></p>
+    </div>
+    <div class="markets" id="markets-grid"></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="kontak" aria-labelledby="cta-heading">
+  <div class="wrap">
+    <div class="cta-section reveal">
+      <h2 id="cta-heading" data-i18n="ctaSection.heading"></h2>
+      <p data-i18n="ctaSection.subtext"></p>
+      <div class="cta-actions" id="cta-actions"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap footer-grid">
+    <a href="/" class="logo">
+      <span class="logo-mark" aria-hidden="true">NM</span>
+      <span>Nusantara Mobile Studio</span>
+    </a>
+    <nav class="footer-links" id="footer-links" aria-label="Footer links"></nav>
+  </div>
+  <div class="wrap footer-bottom" id="footer-copyright"></div>
+</footer>
+
+<!-- Chat FAB -->
+<a class="chat-fab" id="chatFab" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.93 11.93 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.11.55 4.16 1.59 5.97L0 24l6.22-1.55A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.52zm-8.52 18.4a9.92 9.92 0 0 1-5.05-1.38l-.36-.21-3.69.92.97-3.57-.24-.37A9.88 9.88 0 0 1 2.08 12C2.08 6.47 6.47 2.08 12 2.08c2.64 0 5.12 1.03 6.99 2.9A9.84 9.84 0 0 1 21.92 12c0 5.53-4.39 9.88-9.92 9.88zm5.41-7.43c-.3-.15-1.76-.87-2.03-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.27-.47-2.42-1.49-.9-.8-1.5-1.78-1.68-2.08-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.52-.07-.15-.68-1.63-.93-2.23-.24-.58-.49-.5-.68-.51h-.58c-.2 0-.52.07-.79.38-.27.3-1.04 1.01-1.04 2.47 0 1.45 1.06 2.86 1.21 3.06.15.2 2.08 3.18 5.04 4.46.7.3 1.25.48 1.68.61.71.22 1.35.19 1.86.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.41-.07-.12-.27-.2-.57-.35z"/></svg>
+</a>
+
+<script src="config.js"></script>
+<script>
+(function(){
+"use strict";
+
+const C   = window.__NMS_CONFIG__;
+if(!C){ console.error("config.js missing"); return; }
+
+/* ─── Helpers ─── */
+const esc = s => String(s).replace(/[&<>"']/g,
+  m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+
+/* ─── Language state ─── */
+let LANG = localStorage.getItem('nms-lang') ||
+  (navigator.language && navigator.language.startsWith('id') ? 'id' : 'en');
+
+/*
+ * t(obj) — resolve bilingual object atau string biasa
+ * t({ id:"...", en:"..." }) → string sesuai LANG
+ * t("plain string")         → string itu sendiri
+ */
+function t(obj){
+  if(!obj) return '';
+  if(typeof obj === 'string') return obj;
+  return obj[LANG] || obj['id'] || obj['en'] || '';
+}
+
+/* ─── Apply lang ke <html> dan tombol ─── */
+function applyLangAttr(){
+  document.documentElement.lang = LANG;
+  document.getElementById('btn-id').classList.toggle('active', LANG === 'id');
+  document.getElementById('btn-en').classList.toggle('active', LANG === 'en');
+  document.getElementById('btn-id').setAttribute('aria-pressed', LANG === 'id');
+  document.getElementById('btn-en').setAttribute('aria-pressed', LANG === 'en');
+}
+
+/* ─── Update semua elemen data-i18n ─── */
+function applyI18n(){
+  // Flat key resolver misal "nav.portfolio" → C.nav.portfolio
+  function resolve(keyPath){
+    return keyPath.split('.').reduce((o,k) => (o && o[k] !== undefined ? o[k] : null), C);
+  }
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const val = resolve(el.dataset.i18n);
+    if(val !== null) el.textContent = t(val);
+  });
+}
+
+/* ─── SEO Meta (update on lang change too) ─── */
+function initMeta(){
+  const { studio, seo } = C;
+  document.getElementById('page-title').textContent = t(seo.title);
+  document.getElementById('meta-desc').content      = t(seo.description);
+  document.getElementById('meta-keywords').content  = t(seo.keywords);
+  document.getElementById('og-locale').content      = LANG === 'id' ? 'id_ID' : 'en_US';
+
+  const url = studio.baseUrl + '/';
+  ['canonical','og-url','og-title','tw-title'].forEach(id => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    if(id === 'og-title' || id === 'tw-title') el.content = t(seo.title);
+    else if(id === 'canonical') el.href = url;
+    else el.content = url;
+  });
+  document.getElementById('og-desc').content  = t(seo.description);
+  document.getElementById('tw-desc').content  = t(seo.description);
+  document.getElementById('og-image').content = studio.baseUrl + seo.ogImage;
+  document.getElementById('tw-image').content = studio.baseUrl + seo.ogImage;
+  if(seo.twitterHandle) document.getElementById('tw-site').content = seo.twitterHandle;
+
+  // hreflang
+  document.getElementById('hreflang-id').href      = url;
+  document.getElementById('hreflang-en').href       = url;
+  document.getElementById('hreflang-default').href  = url;
+}
+
+/* ─── GA4 ─── */
+function initGA(){
+  const id = C.analytics && C.analytics.gaId;
+  if(!id) return;
+  const s = document.createElement('script');
+  s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id='+id;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date()); gtag('config', id);
+  window.gtag = gtag;
+}
+
+/* ─── Schema.org ─── */
+function initSchema(){
+  const { studio, seo, contact } = C;
+  const schema = {
+    "@context":"https://schema.org","@type":"Organization",
+    "name":studio.name,"url":studio.baseUrl,
+    "logo":studio.baseUrl+"/favicon.svg",
+    "description":t(seo.description),
+    "foundingDate":studio.since,
+    "address":{"@type":"PostalAddress","addressCountry":"ID"},
+    "contactPoint":{"@type":"ContactPoint","contactType":"customer support",
+      "email":contact.email,"availableLanguage":["Indonesian","English"]},
+    "sameAs":[]
+  };
+  const el = document.createElement('script');
+  el.type = 'application/ld+json';
+  el.textContent = JSON.stringify(schema);
+  document.head.appendChild(el);
+}
+
+/* ─── Chat FAB ─── */
+function initChatFab(){
+  const { whatsapp, whatsappMsg, email } = C.contact;
+  const fab = document.getElementById('chatFab');
+  if(whatsapp && whatsapp.trim()){
+    const msg = encodeURIComponent(t(whatsappMsg) || 'Hi Nusantara Mobile Studio');
+    fab.href = `https://wa.me/${whatsapp.trim()}?text=${msg}`;
+    fab.setAttribute('aria-label', LANG === 'id' ? 'Hubungi via WhatsApp' : 'Contact via WhatsApp');
+  } else {
+    fab.href = `mailto:${email}`;
+    fab.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:26px;height:26px;fill:currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>';
+  }
+}
+
+/* ─── Hero ─── */
+function renderHero(){
+  const h = C.hero;
+  document.getElementById('hero-eyebrow').innerHTML =
+    `<span class="dot" aria-hidden="true"></span> ${esc(t(h.eyebrow))}`;
+  document.getElementById('hero-heading').innerHTML = t(h.headline);
+  document.getElementById('hero-lead').textContent  = t(h.lead);
+
+  document.getElementById('hero-actions').innerHTML =
+    `<a href="${esc(h.cta.primary.href)}" class="btn-primary">${esc(t(h.cta.primary.label))}</a>
+     <a href="${esc(h.cta.secondary.href)}" class="btn-ghost">${esc(t(h.cta.secondary.label))}</a>`;
+
+  document.getElementById('hero-meta').innerHTML = h.stats.map(s =>
+    `<div><strong>${esc(s.value)}${esc(s.suffix)}</strong>${esc(t(s.label))}</div>`
+  ).join('');
+}
+
+/* ─── Stats band ─── */
+function renderStatsBand(){
+  document.getElementById('stats-grid').innerHTML = C.statsband.map(s =>
+    `<div class="stat">
+       <div class="num" data-count="${s.count}">0</div>
+       <div class="lbl">${esc(t(s.label))}</div>
+     </div>`
+  ).join('');
+}
+
+/* ─── Portfolio ─── */
+let portfolioState = { filter: 'live', visible: 0 };
+
+function renderPortfolio(){
+  const PP = (C.portfolio && C.portfolio.perPage) || 8;
+  const PL = C.portfolio;
+
+  function badge(status){
+    const labels = PL.filterLabels;
+    if(status === 'live') return `<span class="badge badge-live">✓ ${esc(t(labels.live).replace('✓ ',''))}</span>`;
+    if(status === 'soon') return `<span class="badge badge-soon">${esc(t(labels.soon))}</span>`;
+    return `<span class="badge badge-dev">${esc(t(labels.dev))}</span>`;
+  }
+
+  // Build cards
+  document.getElementById('portfolio-grid').innerHTML = C.apps.map(app => {
+    const ic = app.iconDark ? 'color:var(--navy-deep)' : 'color:#fff';
+    return `<div class="app-card" data-status="${esc(app.status)}">
+      <div class="app-icon" style="background:${app.gradient};${ic};">${esc(app.emoji)}</div>
+      <h4>${esc(app.name)}</h4>
+      <div class="cat">${esc(app.category)} · ${esc(app.market)}</div>
+      <div class="badges">${badge(app.status)}${(app.tags||[]).map(tg=>`<span class="badge badge-tag">${esc(tg)}</span>`).join('')}</div>
+      ${app.status==='live'&&app.playStoreUrl?`<a href="${esc(app.playStoreUrl)}" target="_blank" rel="noopener noreferrer" style="display:block;margin-top:12px;font-size:.78rem;color:var(--teal);font-family:'JetBrains Mono',monospace;">${esc(t(PL.playStoreLink))}</a>`:''}
+    </div>`;
+  }).join('');
+
+  // Count by status
+  const cnt = { all: C.apps.length, live: 0, soon: 0, dev: 0 };
+  C.apps.forEach(a => { if(cnt[a.status]!==undefined) cnt[a.status]++; });
+  if(portfolioState.filter === 'live' && cnt.live === 0) portfolioState.filter = 'all';
+  if(portfolioState.visible === 0) portfolioState.visible = PP;
+
+  // Tabs
+  const tabDefs = [
+    { key:'all',  label: t(PL.filterLabels.all),  count: cnt.all  },
+    { key:'live', label: t(PL.filterLabels.live), count: cnt.live },
+    { key:'soon', label: t(PL.filterLabels.soon), count: cnt.soon },
+    { key:'dev',  label: t(PL.filterLabels.dev),  count: cnt.dev  },
+  ];
+  const tabsEl = document.getElementById('filter-tabs');
+  tabsEl.innerHTML = tabDefs.filter(d => d.count > 0).map(d =>
+    `<button class="filter-tab${d.key===portfolioState.filter?' active':''}"
+             data-filter="${d.key}" role="tab"
+             aria-selected="${d.key===portfolioState.filter}" type="button">
+       ${esc(d.label)}
+       <span style="margin-left:6px;opacity:.6;font-size:.7rem;">${d.count}</span>
+     </button>`
+  ).join('');
+
+  applyPortfolioFilter(PP, cnt);
+
+  tabsEl.onclick = e => {
+    const btn = e.target.closest('.filter-tab');
+    if(!btn) return;
+    portfolioState.filter  = btn.dataset.filter;
+    portfolioState.visible = PP;
+    tabsEl.querySelectorAll('.filter-tab').forEach(b => {
+      b.classList.toggle('active', b.dataset.filter === portfolioState.filter);
+      b.setAttribute('aria-selected', b.dataset.filter === portfolioState.filter);
+    });
+    applyPortfolioFilter(PP, cnt);
+  };
+
+  document.getElementById('load-more-btn').onclick = () => {
+    portfolioState.visible += PP;
+    applyPortfolioFilter(PP, cnt);
+  };
+}
+
+function applyPortfolioFilter(PP, cnt){
+  const PL    = C.portfolio;
+  const cards = document.querySelectorAll('.app-card');
+  let shown = 0, total = 0;
+  cards.forEach(c => {
+    const match = portfolioState.filter === 'all' || c.dataset.status === portfolioState.filter;
+    if(match){
+      total++;
+      if(shown < portfolioState.visible){ c.classList.remove('hidden'); shown++; }
+      else c.classList.add('hidden');
+    } else c.classList.add('hidden');
+  });
+
+  // Counter text
+  const CT = PL.counterText;
+  let cText;
+  if(portfolioState.filter === 'live' && cnt.live === 0){
+    cText = `${t(CT.noneYet)} <strong>${shown}</strong> ${t(CT.of)} <strong>${total}</strong> ${t(CT.pipelineText)}`;
+  } else {
+    const lbl = portfolioState.filter === 'all' ? t(CT.apps) :
+                portfolioState.filter === 'live' ? t(CT.liveApps) :
+                portfolioState.filter === 'soon' ? t(CT.soonApps) : t(CT.devApps);
+    cText = `${t(CT.showing)} <strong>${shown}</strong> ${t(CT.of)} <strong>${total}</strong> ${lbl}`;
+  }
+  document.getElementById('portfolio-counter').innerHTML = cText;
+
+  // Load more
+  const remaining = total - shown;
+  const wrap = document.getElementById('load-more-wrap');
+  const pill = document.getElementById('load-more-remaining');
+  if(remaining > 0){
+    wrap.style.display = 'block';
+    pill.textContent   = `+${remaining}`;
+    document.querySelector('[data-i18n="portfolio.loadMore"]').textContent = t(PL.loadMore);
+  } else {
+    wrap.style.display = 'none';
+  }
+}
+
+/* ─── Accounts ─── */
+function renderAccounts(){
+  document.getElementById('account-grid').innerHTML = C.accounts.map(a =>
+    `<div class="account-card">
+       <div class="glow" style="background:${a.glow};" aria-hidden="true"></div>
+       <span class="num mono">${esc(t(a.num))}</span>
+       <h4>${esc(a.title)}</h4>
+       <p>${esc(t(a.desc))}</p>
+       <div class="count">${esc(a.count)}<span>${esc(t(a.unit))}</span></div>
+     </div>`
+  ).join('');
+}
+
+/* ─── Process ─── */
+function renderProcess(){
+  document.getElementById('process-steps').innerHTML = C.steps.map(s =>
+    `<div class="step${s.active?' active':''}">
+       <div class="badge-num">${esc(s.num)}</div>
+       <h4>${esc(t(s.title))}</h4>
+       <p>${esc(t(s.desc))}</p>
+     </div>`
+  ).join('');
+}
+
+/* ─── Why facts ─── */
+function renderWhyList(){
+  document.getElementById('why-list').innerHTML = C.whySection.points.map(p =>
+    `<li>
+       <div class="ico" aria-hidden="true">${esc(p.num)}</div>
+       <div><strong>${esc(t(p.title))}</strong><span>${esc(t(p.desc))}</span></div>
+     </li>`
+  ).join('');
+
+  document.getElementById('why-facts').innerHTML = C.whyFacts.map(f =>
+    `<div class="mini-stat-row">
+       <span class="k">${esc(t(f.k))}</span>
+       <span class="v">${esc(t(f.v))}</span>
+     </div>`
+  ).join('');
+}
+
+/* ─── Markets ─── */
+function renderMarkets(){
+  document.getElementById('markets-grid').innerHTML = C.markets.map(m =>
+    `<div class="market-pill">
+       <span class="name">${m.flag} ${esc(m.name)}</span>
+       <span class="n mono">${esc(m.count)}</span>
+     </div>`
+  ).join('');
+}
+
+/* ─── CTA ─── */
+function renderCTA(){
+  const { email, whatsapp, whatsappMsg } = C.contact;
+  const waUrl = whatsapp
+    ? `https://wa.me/${whatsapp.trim()}?text=${encodeURIComponent(t(whatsappMsg)||'Hi')}`
+    : null;
+  const btnLabel = t(C.ctaSection.btnChat) + (waUrl ? t(C.ctaSection.btnWa) : '');
+  document.getElementById('cta-actions').innerHTML =
+    `<a href="${waUrl||'mailto:'+esc(email)}" class="btn-primary" target="${waUrl?'_blank':'_self'}" rel="noopener noreferrer">${esc(btnLabel)}</a>
+     <a href="mailto:${esc(email)}" class="btn-ghost">${esc(email)}</a>`;
+}
+
+/* ─── Footer ─── */
+function renderFooter(){
+  document.getElementById('footer-copyright').textContent = t(C.footer.copyright);
+  document.getElementById('footer-links').innerHTML = C.footer.links.map(l =>
+    `<a href="${esc(l.href)}">${esc(t(l.label))}</a>`
+  ).join('');
+}
+
+/* ─── Nav links (dynamic) ─── */
+function renderNav(){
+  document.getElementById('nav-cta-btn').textContent = t(C.nav.cta);
+}
+
+/* ─── Strip ─── */
+function renderStrip(){
+  const cats = ["Games","Tools & Utilities","Health & Fitness","Finance",
+                "Lifestyle","Education","Business","Productivity","Music & Audio","Entertainment"];
+  const chips = [...cats,...cats].map(c =>
+    `<span class="chip"><span class="sq" aria-hidden="true"></span>${esc(c)}</span>`
+  ).join('');
+  document.getElementById('stripTrack').innerHTML = chips;
+}
+
+/* ─── Mobile nav ─── */
+function initMobileNav(){
+  const toggle = document.getElementById('navToggle');
+  const nav    = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.textContent = open ? '✕' : '☰';
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.textContent = '☰';
+  }));
+}
+
+/* ─── Animations ─── */
+function initAnimations(){
+  const io = new IntersectionObserver(entries =>
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); }),
+    { threshold:.2 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  const cio = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.count,10);
+      let cur = 0;
+      const step = Math.max(Math.floor(900/target),16);
+      const timer = setInterval(() => {
+        cur = Math.min(cur+1, target);
+        el.textContent = cur;
+        if(cur >= target) clearInterval(timer);
+      }, step);
+      cio.unobserve(el);
+    });
+  },{ threshold:.4 });
+  document.querySelectorAll('.num[data-count]').forEach(c => cio.observe(c));
+}
+
+/* ─────────────────────────────────────────
+ * FULL RENDER — dipanggil saat boot + saat ganti bahasa
+ * ───────────────────────────────────────── */
+function renderAll(){
+  applyLangAttr();
+  initMeta();
+  applyI18n();
+  renderNav();
+  renderHero();
+  renderStatsBand();
+  portfolioState.visible = (C.portfolio && C.portfolio.perPage) || 8;
+  renderPortfolio();
+  renderAccounts();
+  renderProcess();
+  renderWhyList();
+  renderMarkets();
+  renderCTA();
+  renderFooter();
+  initChatFab();
+}
+
+/* ─── Public: language toggle ─── */
+window.setLang = function(lang){
+  if(LANG === lang) return;
+  LANG = lang;
+  localStorage.setItem('nms-lang', lang);
+  renderAll();
+  // Re-init count-up karena DOM direset
+  document.querySelectorAll('.num[data-count]').forEach(el => {
+    el.textContent = '0';
+  });
+  initAnimations();
+};
+
+/* ─── BOOT ─── */
+function boot(){
+  initGA();
+  initSchema();
+  renderStrip();
+  renderAll();
+  initMobileNav();
+  initAnimations();
+}
+
+document.readyState === 'loading'
+  ? document.addEventListener('DOMContentLoaded', boot)
+  : boot();
+
+})();
+</script>
+</body>
+</html>

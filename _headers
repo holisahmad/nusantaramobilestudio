@@ -1,0 +1,38 @@
+/*
+  # =============================================================
+  # NUSANTARA MOBILE STUDIO — HTTP Security Headers
+  # Untuk: Netlify / Cloudflare Pages
+  # =============================================================
+  # File ini otomatis dibaca Netlify dan Cloudflare Pages.
+  # Taruh di root folder bersama index.html
+  # =============================================================
+
+  # ── Cegah halaman di-embed di iframe (Clickjacking) ──────────
+  X-Frame-Options: DENY
+
+  # ── Cegah browser menebak content-type (MIME sniffing) ───────
+  X-Content-Type-Options: nosniff
+
+  # ── Paksa HTTPS, 1 tahun ─────────────────────────────────────
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+  # ── Referrer: kirim origin saja, bukan full URL ──────────────
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # ── Matikan fitur browser yang tidak dipakai ─────────────────
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+
+  # ── Content Security Policy ──────────────────────────────────
+  # Izinkan:
+  #   - default-src 'self'
+  #   - style: inline (pakai <style> tag) + Google Fonts
+  #   - font: Google Fonts
+  #   - script: inline IIFE + config.js lokal + Google Analytics (opsional)
+  #   - img: self + data: (untuk grain SVG inline) + https (og-image)
+  #   - connect: Google Analytics
+  #   - frame-ancestors: none (double protection vs clickjacking)
+  Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+
+  # ── Sembunyikan info server ───────────────────────────────────
+  X-Powered-By:
+  Server:

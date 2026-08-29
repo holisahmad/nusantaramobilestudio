@@ -1,0 +1,16 @@
+{
+  "name": "Nusantara Mobile Studio",
+  "short_name": "NM Studio",
+  "description": "Studio pengembang aplikasi Android ber-monetisasi iklan",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0A0D28",
+  "theme_color": "#0A0D28",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    }
+  ]
+}

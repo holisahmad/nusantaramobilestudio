@@ -22,15 +22,15 @@ const CONFIG = {
   studio: {
     name: "Nusantara Mobile Studio",
     since: "2024",
-    domain: "nusantaramobile.studio",
-    baseUrl: "https://nusantaramobile.studio",
+    domain: "holisahmad.github.io/nusantaramobilestudio",
+    baseUrl: "https://holisahmad.github.io/nusantaramobilestudio/",
   },
 
   /* ----------------------------------------------------------
    * KONTAK (tidak diterjemahkan)
    * ---------------------------------------------------------- */
   contact: {
-    email: "hello@nusantaramobile.studio",
+    email: "lencakstudio@gmail.com",
     whatsapp: "6285655268945",
     whatsappMsg: {
       id: "Halo Nusantara Mobile Studio, saya ingin berdiskusi tentang:",

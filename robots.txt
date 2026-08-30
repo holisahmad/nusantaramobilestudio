@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://nusantaramobile.studio/sitemap.xml
+Sitemap: https://holisahmad.github.io/nusantaramobilestudio/sitemap.xml

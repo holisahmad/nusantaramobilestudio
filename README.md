@@ -45,9 +45,8 @@ nusantaramobilestudio/
 │
 ├── _headers                  ← Security headers (Netlify / Cloudflare Pages)
 ├── .htaccess                 ← Security headers (cPanel / Apache)
-├── vercel.json               ← Security headers (Vercel)
-│
-└── nusantara-mobile-studio.html  ← File lama, bisa dihapus
+└── vercel.json               ← Security headers (Vercel)
+
 ```
 
 > **Aturan utama:** Semua update konten dilakukan di `config.js`. Jangan edit teks langsung di `index.html`.
@@ -104,8 +103,8 @@ Data non-teks (angka, URL, warna) cukup satu nilai.
 studio: {
   name:    "Nusantara Mobile Studio",  // Nama studio (tidak diterjemahkan)
   since:   "2024",                     // Tahun berdiri
-  domain:  "nusantaramobile.studio",   // Domain tanpa https://
-  baseUrl: "https://nusantaramobile.studio", // URL lengkap dengan https://
+  domain:  "holisahmad.github.io/nusantaramobilestudio",   // Domain tanpa https://
+  baseUrl: "https://holisahmad.github.io/nusantaramobilestudio/", // URL lengkap dengan https://
 },
 ```
 
@@ -117,7 +116,7 @@ studio: {
 
 ```js
 contact: {
-  email:    "hello@nusantaramobile.studio",  // Email kontak
+  email:    "lencakstudio@gmail.com",  // Email kontak
   whatsapp: "6285655268945",                 // Nomor WA tanpa + (62xxx...)
   whatsappMsg: {
     id: "Halo Nusantara Mobile Studio, saya ingin berdiskusi tentang:",

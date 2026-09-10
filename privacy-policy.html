@@ -85,16 +85,16 @@
     }
 
     .logo-mark {
-      width: 32px;
-      height: 32px;
-      border-radius: 9px;
-      background: linear-gradient(135deg, var(--coral), var(--violet));
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 800;
-      font-size: .95rem;
-      color: var(--navy-deep);
+      overflow: hidden;
+      flex-shrink: 0;
+      /* legacy props removed */
+      font-size: 0;
     }
 
     .back-link {
@@ -202,7 +202,7 @@
 
   <header>
     <a href="/nusantaramobilestudio/" class="logo">
-      <span class="logo-mark">NM</span>
+      <span class="logo-mark"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="36" height="36" rx="10" fill="#0D0E1E"/><defs><linearGradient id="ppg1" x1="7" y1="7" x2="20" y2="29" gradientUnits="userSpaceOnUse"><stop stop-color="#FF4E9C"/><stop offset="1" stop-color="#BF4BFF"/></linearGradient><linearGradient id="ppg2" x1="18" y1="7" x2="30" y2="29" gradientUnits="userSpaceOnUse"><stop stop-color="#9B50FF"/><stop offset="1" stop-color="#6040CC"/></linearGradient></defs><path d="M7.5 7.5H12.8L18.5 19.2V7.5H23.2V28.5H18.2L12.2 16.5V28.5H7.5V7.5Z" fill="url(#ppg1)"/><path d="M18.5 7.5H28.5V28.5H23.2V16.5L18.5 7.5Z" fill="url(#ppg2)"/></svg></span>
       Nusantara Mobile Studio
     </a>
     <a href="/nusantaramobilestudio/" class="back-link">← Kembali ke Beranda</a>

@@ -142,26 +142,27 @@
         <span class="badge">Google Play Developer Compliance</span>
         <h1>Kebijakan Privasi / Privacy Policy</h1>
         <div class="meta">
-            <strong>Nama Aplikasi:</strong> Simulasi KPR &amp; Cicilan<br>
+            <strong>Nama Aplikasi:</strong> Simulasi KPR & Cicilan<br>
             <strong>Package Name:</strong> <code>com.simulasikpr.app</code><br>
+            <strong>Kategori:</strong> Finansial & Properti<br>
             <strong>Pengembang:</strong> Nusantara Mobile Studio<br>
-            <strong>Tanggal Berlaku:</strong> 12 September 2026
+            <strong>Tanggal Pembaruan:</strong> 12 September 2026
         </div>
     </div>
 
     <div class="highlight-box">
-        <strong>Ringkasan:</strong> Aplikasi <strong>Simulasi KPR &amp; Cicilan</strong> dikembangkan oleh Nusantara Mobile Studio sebagai alat bantu simulasi finansial properti dan kendaraan. Kebijakan Privasi ini menjelaskan bagaimana kami mengelola data, menghormati privasi pengguna, serta mematuhi <strong>Undang-Undang No. 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP)</strong> di Indonesia, kebijakan pengembang Google Play, <strong>GDPR</strong>, dan <strong>CCPA</strong>.
+        <strong>Ringkasan:</strong> Aplikasi Simulasi KPR & Cicilan dikembangkan oleh Nusantara Mobile Studio sebagai sarana alat bantu kalkulasi simulasi kredit pemilikan rumah (KPR konvensional & syariah) dan cicilan kendaraan. Kebijakan Privasi ini menjelaskan bagaimana kami mengelola data, menghormati privasi pengguna, serta mematuhi <strong>Undang-Undang No. 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP)</strong> di Indonesia, standar Google Play Developer Policy, <strong>GDPR</strong>, dan <strong>CCPA</strong>.
     </div>
 
-    <h2>1. Data yang Dikumpulkan dan Penggunaannya</h2>
-    <p>Aplikasi ini dirancang dengan prinsip minimasi data (<em>data minimization</em>) dan privasi sejak perancangan (<em>privacy by design</em>):</p>
+    <h2>1. Data yang Dikumpulkan dan Penyimpanan Lokal</h2>
+    <p>Aplikasi ini dibangun dengan komitmen privasi mutlak (<em>privacy by design</em>):</p>
     <ul>
-        <li><strong>Tidak Ada Pengumpulan Identitas Pribadi:</strong> Kami tidak meminta registrasi akun, dan tidak mengumpulkan informasi pribadi seperti Nama Lengkap, NIK (KTP), Email, Nomor Telepon, ataupun Data Rekening Perbankan.</li>
-        <li><strong>Penyimpanan Riwayat Simulasi (Lokal di Perangkat):</strong> Semua angka perhitungan simulasi (seperti harga properti, uang muka, suku bunga, tenor, dan catatan skenario) disimpan <strong>secara lokal di memori internal perangkat Anda</strong> menggunakan database Room SQLite. Data ini bersifat pribadi di dalam isolasi (<em>sandbox</em>) aplikasi dan tidak pernah dikirimkan ke server eksternal pengembang.</li>
+        <li><strong>Tanpa Data Identitas Pribadi:</strong> Kami tidak mewajibkan pembuatan akun dan tidak mengumpulkan informasi pribadi seperti Nama Lengkap, NIK/KTP, Alamat Email, Nomor Rekening Bank, atau Nomor Kontak pengguna.</li>
+        <li><strong>Penyimpanan Lokal Mandiri:</strong> Seluruh input simulasi KPR/cicilan disimpan secara lokal di perangkat Anda menggunakan basis data Room SQLite.</li>
     </ul>
 
     <h2>2. Izin Aplikasi Android (Android Permissions)</h2>
-    <p>Aplikasi hanya meminta izin teknis minimal yang dideklarasikan di <code>AndroidManifest.xml</code> berikut:</p>
+    <p>Aplikasi hanya meminta izin teknis minimum yang dideklarasikan di <code>AndroidManifest.xml</code> berikut demi menjalankan fungsionalitas aplikasi:</p>
     <table>
         <thead>
             <tr>
@@ -172,57 +173,56 @@
         <tbody>
             <tr>
                 <td><code>android.permission.INTERNET</code></td>
-                <td>Diperlukan untuk memuat iklan dari Google AdMob serta memverifikasi preferensi formulir persetujuan Google UMP (User Messaging Platform).</td>
+                <td>Diperlukan untuk memuat konten iklan resmi dari Google AdMob serta memverifikasi preferensi formulir persetujuan Google UMP (User Messaging Platform).</td>
             </tr>
             <tr>
                 <td><code>android.permission.ACCESS_NETWORK_STATE</code></td>
-                <td>Diperlukan oleh SDK iklan Google untuk memeriksa ketersediaan koneksi internet sebelum meminta penayangan iklan.</td>
+                <td>Diperlukan oleh SDK iklan Google dan layanan Google Play untuk memeriksa ketersediaan koneksi internet sebelum meminta penayangan iklan.</td>
             </tr>
         </tbody>
     </table>
-    <p>Aplikasi <strong>TIDAK PERNAH</strong> meminta atau mengakses izin sensitif seperti Lokasi GPS, Kamera, Mikrofon, Kontak, Kalender, atau Berkas Penyimpanan Eksternal Pribadi pengguna.</p>
 
     <h2>3. Layanan Pihak Ketiga &amp; Periklanan (Google AdMob)</h2>
-    <p>Aplikasi menggunakan layanan pihak ketiga resmi dari Google untuk mendukung pembiayaan pengembangan aplikasi secara gratis:</p>
+    <p>Aplikasi ini didukung oleh monetisasi iklan Google pihak ketiga agar dapat diunduh dan digunakan secara gratis:</p>
     <ul>
-        <li><strong>Google AdMob &amp; Google Play Services:</strong> Menampilkan unit iklan spanduk (adaptive banner) dan iklan layar penuh peralihan (interstitial) dengan pembatasan frekuensi ketat (<em>frequency capping</em>). Google dapat mengumpulkan pengenal perangkat non-pribadi seperti <em>Google Advertising ID (AAID)</em> untuk mencegah penipuan klik (invalid traffic) dan menayangkan iklan relevan sesuai izin pengguna. Rujukan kebijakan privasi Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Kebijakan Privasi Google</a> dan <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">Privasi Mitra Google AdMob</a>.</li>
-        <li><strong>Google User Messaging Platform (UMP SDK):</strong> Digunakan untuk menampilkan formulir persetujuan privasi (consent form) bagi pengguna di wilayah regulasi (seperti Uni Eropa / GDPR).</li>
+        <li><strong>Google AdMob &amp; Google Play Services:</strong> Menampilkan unit iklan yang mematuhi standar penayangan iklan Google. Google dapat memproses pengenal perangkat non-pribadi seperti <em>Google Advertising ID (AAID)</em> untuk mencegah penipuan klik (invalid traffic) dan menayangkan iklan yang sesuai dengan preferensi pengguna. Rujukan resmi: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Kebijakan Privasi Google</a> dan <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">Privasi Google AdMob</a>.</li>
+        <li><strong>Google User Messaging Platform (UMP):</strong> Digunakan untuk menampilkan formulir persetujuan konsen (Consent Form) bagi pengguna di wilayah regulasi (seperti Uni Eropa / GDPR).</li>
     </ul>
 
     <h2>4. Hak Pengguna &amp; Penghapusan Data (UU PDP No. 27/2022)</h2>
-    <p>Sesuai amanat Undang-Undang No. 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP), Anda memiliki kendali penuh atas data Anda:</p>
+    <p>Berdasarkan Undang-Undang No. 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP):</p>
     <ul>
-        <li><strong>Menghapus Riwayat Simulasi:</strong> Anda dapat menghapus setiap skenario simulasi kapan saja melalui menu *"Simulasi Tersimpan"* di dalam aplikasi, atau menghapus seluruh data kalkulator melalui menu <em>Pengaturan Android &gt; Aplikasi &gt; Simulasi KPR &amp; Cicilan &gt; Penyimpanan &gt; Hapus Data</em>.</li>
-        <li><strong>Mengatur Personalisasi Iklan:</strong> Anda dapat menyetel ulang atau menonaktifkan personalisasi iklan Google kapan saja melalui menu <em>Pengaturan Android &gt; Google &gt; Iklan &gt; Reset atau Hapus ID Iklan</em>.</li>
+        <li><strong>Penghapusan Data Lokal:</strong> Pengguna dapat menghapus seluruh riwayat aktivitas atau data lokal aplikasi kapan saja melalui menu pengaturan internal di dalam aplikasi (jika tersedia) atau melalui menu ponsel: <em>Pengaturan Android &gt; Aplikasi &gt; Simulasi KPR & Cicilan &gt; Penyimpanan &gt; Hapus Data (Clear Storage)</em>.</li>
+        <li><strong>Pengaturan Personalisasi Iklan:</strong> Pengguna berhak menonaktifkan atau menyetel ulang ID Iklan Google kapan saja melalui menu <em>Pengaturan Android &gt; Google &gt; Iklan &gt; Reset atau Hapus ID Iklan</em>.</li>
     </ul>
 
-    <h2>5. Kebijakan Privasi Anak (Children Privacy)</h2>
-    <p>Aplikasi ini merupakan alat bantu finansial umum yang ditujukan untuk orang dewasa (pembeli properti dan perencana kredit) dan <strong>tidak ditujukan untuk anak-anak di bawah usia 13 tahun (COPPA)</strong> maupun anak di bawah umur. Kami tidak secara sadar mengumpulkan informasi pribadi apa pun dari anak-anak.</p>
+    <h2>5. Kebijakan Privasi Anak-Anak (Children Privacy)</h2>
+    <p>Aplikasi ini ditujukan untuk kalangan umum dan dewasa yang merencanakan pembelian rumah atau kendaraan.</p>
 
-    <h2>6. Standar Perlindungan Global (GDPR &amp; CCPA Compliance)</h2>
+    <h2>6. Standar Regulasi Global (GDPR &amp; CCPA)</h2>
     <ul>
-        <li><strong>Pengguna Kawasan Ekonomi Eropa (EEA &amp; UK / GDPR):</strong> Anda memiliki hak untuk memberikan atau menolak persetujuan iklan terpersonalisasi melalui formulir Google UMP saat aplikasi pertama kali dijalankan.</li>
-        <li><strong>Pengguna California (CCPA / CPRA):</strong> Kami tidak menjual informasi pribadi pengguna. Pengguna dapat memilih keluar dari pelacakan lintas platform melalui setelan iklan perangkat Android.</li>
+        <li><strong>GDPR (Uni Eropa &amp; UK):</strong> Pengguna berhak memberikan atau menarik persetujuan terhadap iklan personalisasi kapan saja melalui pengaturan persetujuan formulir Google UMP.</li>
+        <li><strong>CCPA / CPRA (California):</strong> Kami tidak menjual data pribadi pengguna kepada pihak ketiga mana pun. Pengguna dapat memilih keluar dari pelacakan bertarget melalui pengaturan perangkat Android.</li>
     </ul>
 
     <h2>7. Keamanan Data</h2>
-    <p>Karena seluruh data kalkulasi disimpan secara lokal di dalam ruang isolasi (<em>sandbox</em>) aplikasi Android perangkat Anda, data Anda aman dari akses aplikasi lain di perangkat Anda sesuai mekanisme keamanan sistem operasi Android.</p>
+    <p>Seluruh data aplikasi diisolasi di dalam <em>application sandbox</em> sistem operasi Android pada perangkat Anda, sehingga terlindungi dari akses ilegal aplikasi lain.</p>
 
     <h2>8. Pembaruan Kebijakan Privasi</h2>
-    <p>Kebijakan Privasi ini dapat kami perbarui secara berkala jika terdapat perubahan regulasi atau penambahan fitur aplikasi. Versi terbaru akan selalu tersedia pada halaman web ini dengan tanggal pembaruan yang tercantum.</p>
+    <p>Kebijakan Privasi ini dapat diperbarui sewaktu-waktu seiring penyempurnaan fitur aplikasi atau perubahan regulasi hukum. Setiap versi pembaruan akan dipublikasikan secara transparan pada halaman web ini.</p>
 
-    <h2>9. Hubungi Kami</h2>
-    <p>Jika Anda memiliki pertanyaan atau masukan mengenai Kebijakan Privasi ini, silakan hubungi tim kami:</p>
+    <h2>9. Kontak Pengembang</h2>
+    <p>Jika Anda memiliki pertanyaan mengenai Kebijakan Privasi ini, silakan hubungi kami:</p>
     <ul>
         <li><strong>Email:</strong> <a href="mailto:lencakstudio@gmail.com">lencakstudio@gmail.com</a></li>
         <li><strong>WhatsApp:</strong> <a href="https://wa.me/6285655268945" target="_blank" rel="noopener">+62 856-5526-8945</a></li>
         <li><strong>Pengembang:</strong> Nusantara Mobile Studio</li>
-        <li><strong>Situs Resmi:</strong> <a href="https://holisahmad.github.io/nusantaramobilestudio/" target="_blank" rel="noopener">https://holisahmad.github.io/nusantaramobilestudio/</a></li>
+        <li><strong>Website:</strong> <a href="https://holisahmad.github.io/nusantaramobilestudio/" target="_blank" rel="noopener">https://holisahmad.github.io/nusantaramobilestudio/</a></li>
     </ul>
 
     <div class="footer">
         &copy; 2026 Nusantara Mobile Studio. Seluruh hak cipta dilindungi undang-undang.<br>
-        Dokumen ini dipublikasikan untuk kepatuhan Google Play Console &amp; Google AdMob.
+        Dokumen resmi untuk kepatuhan Google Play Console &amp; Google AdMob.
     </div>
 </div>
 </body>

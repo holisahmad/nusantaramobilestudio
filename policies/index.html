@@ -355,6 +355,44 @@
 
     #toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 
+
+    /* ── Load More ── */
+    .load-more-wrap {
+      text-align: center;
+      margin-top: 36px;
+      margin-bottom: 20px;
+    }
+
+    .btn-load-more {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--cream);
+      font-weight: 600;
+      font-size: .95rem;
+      padding: 14px 32px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: border-color .2s, background .2s, transform .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-load-more:hover {
+      border-color: var(--violet);
+      background: rgba(130, 87, 255, .08);
+      transform: translateY(-2px);
+    }
+
+    .btn-load-more .count-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem;
+      background: rgba(130, 87, 255, .2);
+      color: #b49fff;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
     /* ── Responsive ── */
     @media(max-width:600px) {
       .app-grid { grid-template-columns:1fr; }
@@ -434,6 +472,14 @@
   <!-- Grid -->
   <div class="app-grid" id="appGrid" role="list"></div>
 
+  <!-- Load More Button -->
+  <div class="load-more-wrap" id="loadMoreWrap" style="display:none;">
+    <button class="btn-load-more" id="loadMoreBtn" type="button">
+      <span>Muat Lebih Banyak</span>
+      <span class="count-pill" id="loadMoreRemaining"></span>
+    </button>
+  </div>
+
 </main>
 
 <!-- FOOTER -->
@@ -495,8 +541,10 @@
   });
 
   /* ─── State ─── */
-  let currentCat   = "all";
-  let currentQuery = "";
+  const PAGE_SIZE    = 8;
+  let visibleCount   = PAGE_SIZE;
+  let currentCat     = "all";
+  let currentQuery   = "";
 
   /* ─── Helpers ─── */
   const esc = s => String(s).replace(/[&<>"']/g,
@@ -510,6 +558,8 @@
   function render() {
     const q    = currentQuery.toLowerCase().trim();
     const grid = document.getElementById("appGrid");
+    const wrap = document.getElementById("loadMoreWrap");
+    const pill = document.getElementById("loadMoreRemaining");
 
     const filtered = APPS_UNIQUE.filter(app => {
       const catMatch = currentCat === "all" || app.cat === currentCat;
@@ -521,9 +571,12 @@
       return catMatch && qMatch;
     });
 
-    document.getElementById("shownCount").textContent = filtered.length;
+    const total = filtered.length;
 
-    if (filtered.length === 0) {
+    if (total === 0) {
+      document.getElementById("resultCount").innerHTML =
+        `Menampilkan <strong>0</strong> dari <strong>0</strong> app`;
+      if (wrap) wrap.style.display = "none";
       grid.innerHTML = `<div class="no-results" role="alert">
         <span class="icon">🔎</span>
         Tidak ada app yang cocok dengan pencarian "<strong>${esc(q)}</strong>"
@@ -531,7 +584,13 @@
       return;
     }
 
-    grid.innerHTML = filtered.map(app => {
+    const toShow = filtered.slice(0, visibleCount);
+    const shown  = toShow.length;
+
+    document.getElementById("resultCount").innerHTML =
+      `Menampilkan <strong>${shown}</strong> dari <strong>${total}</strong> app`;
+
+    grid.innerHTML = toShow.map(app => {
       const iconColor = app.dark ? "color:var(--navy-deep)" : "color:#fff";
       const url       = fullUrl(app.file);
       const tagsHtml  = app.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("");
@@ -558,6 +617,15 @@
         </div>
       </article>`;
     }).join("");
+
+    // Load More Visibility & Counter
+    const remaining = total - shown;
+    if (remaining > 0 && wrap && pill) {
+      wrap.style.display = "block";
+      pill.textContent = "+" + remaining;
+    } else if (wrap) {
+      wrap.style.display = "none";
+    }
   }
 
   /* ─── Copy URL ─── */
@@ -582,7 +650,8 @@
   /* ─── Filter buttons ─── */
   document.querySelectorAll(".filter-btn").forEach(btn => {
     btn.addEventListener("click", () => {
-      currentCat = btn.dataset.cat;
+      currentCat   = btn.dataset.cat;
+      visibleCount = PAGE_SIZE; // reset pagination to 8
       document.querySelectorAll(".filter-btn").forEach(b => {
         b.classList.toggle("active", b === btn);
       });
@@ -594,19 +663,25 @@
   document.getElementById("searchInput").addEventListener("input", e => {
     currentQuery = e.target.value;
     currentCat   = "all"; // reset filter saat search
+    visibleCount = PAGE_SIZE; // reset pagination to 8
     document.querySelectorAll(".filter-btn").forEach(b => {
       b.classList.toggle("active", b.dataset.cat === "all");
     });
     render();
   });
 
+  /* ─── Load More Button ─── */
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener("click", () => {
+      visibleCount += PAGE_SIZE;
+      render();
+    });
+  }
+
   /* ─── Update hero stats ─── */
   document.getElementById("stat-total").textContent = APPS_UNIQUE.length;
   document.getElementById("stat-live").textContent  = APPS_UNIQUE.length;
-  document.getElementById("shownCount").textContent  = APPS_UNIQUE.length;
-  // update "dari X" text
-  document.getElementById("resultCount").innerHTML =
-    `Menampilkan <strong id="shownCount">${APPS_UNIQUE.length}</strong> dari <strong>${APPS_UNIQUE.length}</strong> app`;
 
   /* ─── Boot ─── */
   render();

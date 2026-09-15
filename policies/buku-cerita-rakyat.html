@@ -187,6 +187,8 @@
     <ul>
         <li><strong>Google AdMob &amp; Google Play Services:</strong> Menampilkan unit iklan yang mematuhi standar penayangan iklan Google. Google dapat memproses pengenal perangkat non-pribadi seperti <em>Google Advertising ID (AAID)</em> untuk mencegah penipuan klik (invalid traffic) dan menayangkan iklan yang sesuai dengan preferensi pengguna. Rujukan resmi: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Kebijakan Privasi Google</a> dan <a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">Privasi Google AdMob</a>.</li>
         <li><strong>Google User Messaging Platform (UMP):</strong> Digunakan untuk menampilkan formulir persetujuan konsen (Consent Form) bagi pengguna di wilayah regulasi (seperti Uni Eropa / GDPR).</li>
+        <li><strong>Firebase Analytics (Google LLC):</strong> Aplikasi menggunakan Firebase Analytics untuk mengumpulkan data penggunaan anonim dan agregat (seperti layar yang paling sering dibuka, durasi sesi, dan jumlah pengguna aktif). Data ini <strong>tidak dapat diidentifikasi secara pribadi</strong> dan digunakan semata-mata untuk meningkatkan kualitas aplikasi. Pengguna dapat menonaktifkan pengumpulan data analytics melalui menu <em>Pengaturan &gt; Analytics</em> di dalam aplikasi. Rujukan: <a href="https://firebase.google.com/policies/analytics" target="_blank" rel="noopener">Kebijakan Firebase Analytics</a>.</li>
+        <li><strong>Firebase Realtime Database (Google LLC):</strong> Aplikasi menggunakan Firebase Realtime Database untuk menyimpan dan memuat konten cerita rakyat secara real-time, serta menyimpan data progres membaca pengguna (cerita yang telah dibaca, skor quiz, dan achievement) menggunakan ID perangkat anonim yang tidak dapat mengidentifikasi identitas pribadi pengguna. Data ini disimpan di server Google yang berlokasi di wilayah Asia Tenggara. Rujukan: <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Kebijakan Privasi Firebase</a>.</li>
     </ul>
 
     <h2>4. Hak Pengguna &amp; Penghapusan Data (UU PDP No. 27/2022)</h2>
@@ -206,7 +208,11 @@
     </ul>
 
     <h2>7. Keamanan Data</h2>
-    <p>Seluruh data aplikasi diisolasi di dalam <em>application sandbox</em> sistem operasi Android pada perangkat Anda, sehingga terlindungi dari akses ilegal aplikasi lain.</p>
+    <p>Keamanan data pengguna kami pastikan melalui dua lapisan:</p>
+    <ul>
+        <li><strong>Data Lokal (SharedPreferences):</strong> Preferensi pengaturan aplikasi disimpan secara lokal di dalam <em>application sandbox</em> sistem operasi Android pada perangkat Anda, terlindungi dari akses ilegal aplikasi lain.</li>
+        <li><strong>Data Progres di Cloud (Firebase RTDB):</strong> Data progres membaca dan skor quiz disimpan menggunakan Firebase Realtime Database milik Google LLC dengan enkripsi SSL/TLS saat transit. Akses data dibatasi hanya untuk ID perangkat anonim yang relevan menggunakan Firebase Security Rules.</li>
+    </ul>
 
     <h2>8. Pembaruan Kebijakan Privasi</h2>
     <p>Kebijakan Privasi ini dapat diperbarui sewaktu-waktu seiring penyempurnaan fitur aplikasi atau perubahan regulasi hukum. Setiap versi pembaruan akan dipublikasikan secara transparan pada halaman web ini.</p>

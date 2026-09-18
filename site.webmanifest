@@ -1,16 +1,22 @@
 {
   "name": "Nusantara Mobile Studio",
   "short_name": "NM Studio",
-  "description": "Studio pengembang aplikasi Android ber-monetisasi iklan",
+  "description": "Studio pengembang aplikasi Android Indonesia untuk game, tools, finance, education, health, dan lifestyle.",
+  "lang": "id-ID",
+  "dir": "ltr",
   "start_url": "/nusantaramobilestudio/",
+  "scope": "/nusantaramobilestudio/",
   "display": "browser",
   "background_color": "#0A0D28",
   "theme_color": "#0A0D28",
+  "categories": ["business", "productivity", "entertainment"],
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/nusantaramobilestudio/favicon.svg",
       "type": "image/svg+xml",
-      "sizes": "any"
+      "sizes": "any",
+      "purpose": "any maskable"
     }
   ]
 }

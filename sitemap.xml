@@ -1,18 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://holisahmad.github.io/nusantaramobilestudio/</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
     <loc>https://holisahmad.github.io/nusantaramobilestudio/privacy-policy.html</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://holisahmad.github.io/nusantaramobilestudio/policies/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/aksara.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/app-compounding.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/badminton.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/batik-nusantara.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/budgetwise.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/buku-cerita-rakyat.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/buku-pintar-dapur-resep.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/focusflow.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/hafalan-quran.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/hitungyuk.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/jadwal-sholat-kiblat.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/jadwal-sholat-lengkap.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/kalender-jawa.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/kalkulator-emas.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/kalkulator-kehamilan-anak.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/kalkulator-listrik.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/kalkulator-zakat-waris.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/lamaran-kerja.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/lempar-cakram-nusantara.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/office-doc-scanner.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/ojek-racer.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/pixel-odyssey.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/scancode-device.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/simulasi-kpr.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/vibejournal.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/waroeng-ayam.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/word-connect.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
+  <url><loc>https://holisahmad.github.io/nusantaramobilestudio/policies/zenpulse.html</loc><lastmod>2026-09-18</lastmod><priority>0.6</priority></url>
 </urlset>
